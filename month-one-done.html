@@ -283,6 +283,13 @@
   .ps-process  { height: clamp(270px, 38vw, 390px); margin: 44px 0; }
   .ps-result   { height: clamp(340px, 48vw, 500px); }
 
+  /* real photos replacing placeholders */
+  .real-photo {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+  }
+
   /* intimate slot lives inside a padded wrapper */
   .slot-wrap {
     padding: 0 40px 80px;
@@ -663,24 +670,8 @@
   </div>
 </div>
 
-<!-- ░░ IMAGE 1: HERO MOOD SHOT ░░ -->
-<div class="photo-slot ps-hero fi">
-  <span class="pm pm-tl"></span><span class="pm pm-tr"></span>
-  <span class="pm pm-bl"></span><span class="pm pm-br"></span>
-  <div class="photo-center">
-    <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#4a4a42" stroke-width="1">
-      <rect x="3" y="5" width="18" height="14" rx="1.5"/>
-      <circle cx="12" cy="12" r="3.5"/>
-      <path d="M8.5 5V4a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v1"/>
-    </svg>
-    <p>Your photo goes here</p>
-  </div>
-  <div class="photo-label">
-    <span class="l-tag">Photograph</span>
-    <div class="l-pipe"></div>
-    <p class="l-text">Your stack of printed memory books arranged on a cream linen surface in natural window light from the left. Books slightly fanned, top one open to a completed spread. Shoot from slightly above. Warm, still, quiet — this sets the mood of the entire page.</p>
-  </div>
-</div>
+<!-- IMAGE 1: HERO MOOD SHOT -->
+<img src="mood.jpg" alt="Printed memory books stacked on a linen surface" class="real-photo ps-hero fi">
 
 <!-- OPENING STORY -->
 <div class="story">
@@ -698,25 +689,9 @@
   </div>
 </div>
 
-<!-- ░░ IMAGE 2: INTIMATE SHOT ░░ -->
+<!-- IMAGE 2: INTIMATE SHOT -->
 <div class="slot-wrap fi">
-  <div class="photo-slot ps-intimate">
-    <span class="pm pm-tl"></span><span class="pm pm-tr"></span>
-    <span class="pm pm-bl"></span><span class="pm pm-br"></span>
-    <div class="photo-center">
-      <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#4a4a42" stroke-width="1">
-        <rect x="3" y="5" width="18" height="14" rx="1.5"/>
-        <circle cx="12" cy="12" r="3.5"/>
-        <path d="M8.5 5V4a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v1"/>
-      </svg>
-      <p>Your photo goes here</p>
-    </div>
-    <div class="photo-label">
-      <span class="l-tag">Photograph</span>
-      <div class="l-pipe"></div>
-      <p class="l-text">A child's hand resting on an open page in one of your printed books. Close up, soft natural window light. The page slightly soft-focus in the background. Quiet, tender, still — this is the emotional heart of the page.</p>
-    </div>
-  </div>
+  <img src="intimate.jpg" alt="Hands holding open a printed memory book" class="real-photo ps-intimate">
 </div>
 
 <!-- WHAT THIS IS -->
@@ -773,25 +748,9 @@
     <p>I'll send it to you before the workshop so we're ready to go on the day. You drag your photos in, arrange them, and suddenly it starts looking like something real. This is usually the moment people go quiet for a second because they can't believe how quickly it comes together.</p>
   </div>
 
-  <!-- ░░ IMAGE 3: PROCESS SHOT ░░ -->
+  <!-- IMAGE 3: PROCESS SHOT -->
   <div class="step-slot fi">
-    <div class="photo-slot ps-process">
-      <span class="pm pm-tl"></span><span class="pm pm-tr"></span>
-      <span class="pm pm-bl"></span><span class="pm pm-br"></span>
-      <div class="photo-center">
-        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#4a4a42" stroke-width="1">
-          <rect x="3" y="5" width="18" height="14" rx="1.5"/>
-          <circle cx="12" cy="12" r="3.5"/>
-          <path d="M8.5 5V4a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v1"/>
-        </svg>
-        <p>Your photo goes here</p>
-      </div>
-      <div class="photo-label">
-        <span class="l-tag">Photograph</span>
-        <div class="l-pipe"></div>
-        <p class="l-text">Overhead flat-lay: your laptop open showing the Canva template with photos dragged in, a small stack of printed 4×6 photos beside it, a mug of tea in one corner. Shot from directly above. Warm, real, lived-in — this is the "in the middle of doing it" moment.</p>
-      </div>
-    </div>
+    <img src="process.jpg" alt="Laptop with Canva template open alongside printed photos and tea" class="real-photo ps-process">
   </div>
 
   <div class="step fi">
@@ -818,24 +777,8 @@
   <p>This is the wrong fit if you want an elaborate, heavily designed scrapbook. This is a simple, beautiful, completely doable system for mums who want their memories documented without it becoming another thing that never gets finished.</p>
 </section>
 
-<!-- ░░ IMAGE 4: FINISHED BOOK ░░ -->
-<div class="photo-slot ps-result fi">
-  <span class="pm pm-tl"></span><span class="pm pm-tr"></span>
-  <span class="pm pm-bl"></span><span class="pm pm-br"></span>
-  <div class="photo-center">
-    <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#4a4a42" stroke-width="1">
-      <rect x="3" y="5" width="18" height="14" rx="1.5"/>
-      <circle cx="12" cy="12" r="3.5"/>
-      <path d="M8.5 5V4a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v1"/>
-    </svg>
-    <p>Your photo goes here</p>
-  </div>
-  <div class="photo-label">
-    <span class="l-tag">Photograph</span>
-    <div class="l-pipe"></div>
-    <p class="l-text">Your finished printed memory book held open in two hands, showing a beautiful completed spread. Natural window light, cream or white background. Just hands and book — face out of frame. This is the payoff shot: warm, real, and worth every minute.</p>
-  </div>
-</div>
+<!-- IMAGE 4: FINISHED BOOK -->
+<img src="result.jpg" alt="Finished printed memory book held open showing a completed spread" class="real-photo ps-result fi">
 
 <!-- INVESTMENT -->
 <div class="investment" id="checkout">
