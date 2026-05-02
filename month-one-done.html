@@ -3,8 +3,71 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Month One, Done | East2WestMama</title>
+<title>Memory Keeping Workshop | Month One, Done | East2WestMama</title>
+<meta name="description" content="Join East2WestMama's 90-minute live memory keeping workshop and walk away with one complete month of your family's life documented — photos chosen, captions written, pages ready to print. 199 AED. Online via Zoom.">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Memory Keeping Workshop — Month One, Done | East2WestMama">
+<meta property="og:description" content="A 90-minute live workshop where you create a printed family photo book start to finish. The Scroll to Shelf Method. 199 AED. Hosted by East2WestMama.">
+<meta property="og:image" content="mood.jpg">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Memory Keeping Workshop — Month One, Done | East2WestMama">
+<meta name="twitter:description" content="Stop letting your family photos sit on your phone. 90 minutes, a simple method, and one finished month on your shelf. 199 AED.">
+<meta name="twitter:image" content="mood.jpg">
+
+<!-- Preconnect for faster font load -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- Schema: Course with workshop instances -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "Month One, Done — Memory Keeping Workshop",
+  "description": "A 90-minute live Zoom workshop teaching mums how to create a printed family photo book in one session using the Scroll to Shelf Method. Leave with one complete month documented, photos chosen, captions written, and pages ready to print.",
+  "keywords": "memory keeping, family photo book, printed yearbook, photo organisation, family memories",
+  "provider": {
+    "@type": "Organization",
+    "name": "East2WestMama"
+  },
+  "instructor": {
+    "@type": "Person",
+    "name": "Vera",
+    "affiliation": "East2WestMama"
+  },
+  "hasCourseInstance": [
+    {
+      "@type": "CourseInstance",
+      "courseMode": "online",
+      "startDate": "2026-05-30T10:00",
+      "duration": "PT90M",
+      "offers": {
+        "@type": "Offer",
+        "price": "199",
+        "priceCurrency": "AED",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "CourseInstance",
+      "courseMode": "online",
+      "startDate": "2026-06-01",
+      "duration": "PT90M",
+      "offers": {
+        "@type": "Offer",
+        "price": "199",
+        "priceCurrency": "AED",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+  ]
+}
+</script>
 <style>
   :root {
     --green: #1c3a2a;
@@ -163,118 +226,6 @@
     background: var(--cream);
     transform: translateY(-2px);
     box-shadow: 0 8px 28px rgba(0,0,0,0.18);
-  }
-
-  /* ── PHOTO SLOTS ── */
-  .photo-slot {
-    position: relative;
-    overflow: hidden;
-    background: var(--cream-dark);
-  }
-  /* crosshatch bg */
-  .photo-slot::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(200,169,110,0.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(200,169,110,0.07) 1px, transparent 1px);
-    background-size: 32px 32px;
-    pointer-events: none;
-  }
-
-  /* corner photo-album mounts */
-  .pm {
-    position: absolute;
-    width: 26px;
-    height: 26px;
-    z-index: 2;
-  }
-  .pm::before, .pm::after {
-    content: '';
-    position: absolute;
-    background: var(--accent);
-    opacity: 0.45;
-  }
-  .pm::before { width: 100%; height: 1.5px; }
-  .pm::after  { width: 1.5px; height: 100%; }
-
-  .pm-tl { top: 16px; left: 16px; }
-  .pm-tl::before { top: 0; left: 0; }
-  .pm-tl::after  { top: 0; left: 0; }
-
-  .pm-tr { top: 16px; right: 16px; }
-  .pm-tr::before { top: 0; left: 0; }
-  .pm-tr::after  { top: 0; right: 0; left: auto; }
-
-  .pm-bl { bottom: 72px; left: 16px; }
-  .pm-bl::before { bottom: 0; top: auto; left: 0; }
-  .pm-bl::after  { bottom: 0; top: auto; left: 0; }
-
-  .pm-br { bottom: 72px; right: 16px; }
-  .pm-br::before { bottom: 0; top: auto; left: 0; }
-  .pm-br::after  { bottom: 0; top: auto; right: 0; left: auto; }
-
-  /* center holding area */
-  .photo-center {
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    bottom: 62px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 14px;
-    padding: 40px;
-    z-index: 1;
-  }
-  .photo-center svg { opacity: 0.18; }
-  .photo-center p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(17px, 2.2vw, 22px);
-    font-style: italic;
-    font-weight: 300;
-    color: var(--text-mid);
-    opacity: 0.38;
-    text-align: center;
-    line-height: 1.4;
-    max-width: 340px;
-    margin: 0;
-  }
-
-  /* label strip */
-  .photo-label {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    background: var(--green);
-    padding: 13px 22px 15px;
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    z-index: 3;
-  }
-  .photo-label .l-tag {
-    font-size: 9px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--accent);
-    font-weight: 500;
-    white-space: nowrap;
-    margin-top: 2px;
-    flex-shrink: 0;
-  }
-  .photo-label .l-pipe {
-    width: 1px;
-    background: rgba(200,169,110,0.28);
-    align-self: stretch;
-    flex-shrink: 0;
-  }
-  .photo-label .l-text {
-    font-size: 13px;
-    line-height: 1.55;
-    color: rgba(245,240,232,0.82);
-    font-weight: 300;
-    margin: 0;
   }
 
   /* sizes */
@@ -643,7 +594,6 @@
     .faq { padding: 64px 24px; }
     .close { padding: 80px 24px; }
     .slot-wrap { padding: 0 24px 64px; }
-    .photo-label .l-text { font-size: 12px; }
     .story-inner::before { font-size: 130px; left: -10px; }
   }
 </style>
@@ -655,11 +605,11 @@
   <!-- Collage background: save your 5 book-spread photos as book-1.jpg … book-5.jpg
        in the same folder as this HTML file, then open in a browser. -->
   <div class="hero-collage">
-    <img class="hi-1" src="book-1.jpg" alt="">
-    <img class="hi-2" src="book-2.jpg" alt="">
-    <img class="hi-3" src="book-3.jpg" alt="">
-    <img class="hi-4" src="book-4.jpg" alt="">
-    <img class="hi-5" src="book-5.jpg" alt="">
+    <img class="hi-1" src="book-1.jpg" alt="Open spread from a printed family memory book">
+    <img class="hi-2" src="book-2.jpg" alt="Completed family photo book layout with captions">
+    <img class="hi-3" src="book-3.jpg" alt="Printed memory book pages showing family moments">
+    <img class="hi-4" src="book-4.jpg" alt="Finished family yearbook spread with photos and journaling">
+    <img class="hi-5" src="book-5.jpg" alt="Memory keeping book open to a monthly family photo spread">
   </div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
@@ -671,7 +621,7 @@
 </div>
 
 <!-- IMAGE 1: HERO MOOD SHOT -->
-<img src="mood.jpg" alt="Printed memory books stacked on a linen surface" class="real-photo ps-hero fi">
+<img src="mood.jpg" alt="Printed family memory keeping books stacked on a linen surface" class="real-photo ps-hero fi" fetchpriority="high">
 
 <!-- OPENING STORY -->
 <div class="story">
@@ -691,14 +641,14 @@
 
 <!-- IMAGE 2: INTIMATE SHOT -->
 <div class="slot-wrap fi">
-  <img src="intimate.jpg" alt="Hands holding open a printed memory book" class="real-photo ps-intimate">
+  <img src="intimate.jpg" alt="Hands holding open a printed family memory book showing completed photo pages" class="real-photo ps-intimate" loading="lazy">
 </div>
 
 <!-- WHAT THIS IS -->
 <section class="fi">
   <span class="section-label">What This Is</span>
-  <h2>A 90-minute workshop where we actually <em>do</em> the thing.</h2>
-  <p>Month One, Done is a live workshop on Zoom where I walk you through my Scroll to Shelf Method and by the time we finish, you have one complete month of your family's life documented. Photos chosen. Captions written. Pages finished.</p>
+  <h2>A 90-minute memory keeping workshop where we actually <em>do</em> the thing.</h2>
+  <p>Month One, Done is a live memory keeping workshop on Zoom where I walk you through my Scroll to Shelf Method and by the time we finish, you have one complete month of your family's life documented. Photos chosen. Captions written. Pages finished.</p>
   <p>We sit down together and we do it. Right there, in the workshop, it gets done.</p>
   <p>Some mums work on something from this year. Some go back and rescue a month they've been meaning to capture for years. Either works. The point is that you leave with something real, something you can actually print and put on your shelf.</p>
 </section>
@@ -719,9 +669,9 @@
 <section class="fi">
   <span class="section-label">What You Walk Away With</span>
   <h2>One month of your family's life. <em>Finished.</em></h2>
-  <p>By the end of our 90 minutes together, you'll have chosen your photos for one month, written your captions, and have a set of finished pages ready to send to print.</p>
-  <p>The bigger thing, honestly, is this: you'll have done the thing you've been putting off. And once you've done it once, you know exactly how to do it again. That's the whole point of this workshop. You'll leave with one finished month and proof that this is genuinely as simple as I say it is.</p>
-  <p>The photos on your phone are memories your kids will one day want to see. This is how they get off your phone and onto your shelf.</p>
+  <p>By the end of our 90 minutes together, you'll have chosen your photos for one month, written your captions, and have a set of finished pages ready to send to print as a family photo book.</p>
+  <p>The bigger thing, honestly, is this: you'll have done the thing you've been putting off. And once you've done it once, you know exactly how to do it again. That's the whole point of this memory keeping workshop. You'll leave with one finished month and proof that this is genuinely as simple as I say it is.</p>
+  <p>The photos on your phone are memories your kids will one day want to see. This is how they get off your phone and onto your shelf as a printed yearbook you can actually hold.</p>
 </section>
 
 <!-- STEPS -->
@@ -750,7 +700,7 @@
 
   <!-- IMAGE 3: PROCESS SHOT -->
   <div class="step-slot fi">
-    <img src="process.jpg" alt="Laptop with Canva template open alongside printed photos and tea" class="real-photo ps-process">
+    <img src="process.jpg" alt="Laptop with Canva memory keeping template open alongside printed photos and a cup of tea" class="real-photo ps-process" loading="lazy">
   </div>
 
   <div class="step fi">
@@ -778,7 +728,7 @@
 </section>
 
 <!-- IMAGE 4: FINISHED BOOK -->
-<img src="result.jpg" alt="Finished printed memory book held open showing a completed spread" class="real-photo ps-result fi">
+<img src="result.jpg" alt="Finished printed family photo book held open showing a completed memory keeping spread" class="real-photo ps-result fi" loading="lazy">
 
 <!-- INVESTMENT -->
 <div class="investment" id="checkout">
@@ -815,8 +765,8 @@
 <section class="about fi">
   <span class="section-label">Your Host</span>
   <h2>I'm Vera.</h2>
-  <p>I'm an AMI Montessori-trained parenting coach and the founder of East2WestMama. I've been making family memory books for nearly ten years. I have a shelf full of them at home and my kids ask to look at them constantly.</p>
-  <p>I'm a mum who figured out a system that actually works around a real life, around school pickups and work deadlines and the kind of weeks where you just survive and that's enough.</p>
+  <p>I'm an AMI Montessori-trained parenting coach and the founder of East2WestMama. I've been making family memory books for nearly ten years. I have a shelf full of printed family yearbooks at home and my kids ask to look at them constantly.</p>
+  <p>I'm a mum who figured out a memory keeping system that actually works around a real life, around school pickups and work deadlines and the kind of weeks where you just survive and that's enough.</p>
   <p>I created this workshop because I know the feeling of having thousands of photos and nothing to show for them. And I know how good it feels to finally fix that. I want you to have that feeling by the time you close your laptop.</p>
 </section>
 
