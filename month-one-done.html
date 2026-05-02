@@ -88,6 +88,37 @@
     pointer-events: none;
   }
 
+  /* ── HERO COLLAGE ── */
+  .hero-collage {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .hero-collage img {
+    position: absolute;
+    object-fit: cover;
+    will-change: transform;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  }
+  /* Collage positions — 5 spreads tiling the full hero area with slight overlaps and rotation */
+  .hi-1 { width: 56%; height: 74%; top: -10%; left: -5%;  transform: rotate(-1.8deg); transform-origin: 30% 40%; }
+  .hi-2 { width: 52%; height: 68%; top:  -6%; right: -4%; transform: rotate( 1.5deg); transform-origin: 70% 30%; }
+  .hi-3 { width: 50%; height: 64%; top:  22%; left:  25%; transform: rotate(-0.7deg); transform-origin: 50% 50%; }
+  .hi-4 { width: 54%; height: 72%; bottom: -18%; left: -4%;  transform: rotate( 2.2deg); transform-origin: 25% 70%; }
+  .hi-5 { width: 50%; height: 68%; bottom: -14%; right: -3%; transform: rotate(-1.6deg); transform-origin: 75% 65%; }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(28,58,42,0.45);
+    z-index: 1;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
   .brand-tag {
     font-size: 10px;
     letter-spacing: 5px;
@@ -614,11 +645,22 @@
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-ring"></div>
-  <span class="brand-tag fi">East2WestMama</span>
-  <h1 class="fi d1">Month One,<br><em>Done.</em></h1>
-  <p class="hero-tagline fi d2">You've been meaning to do this for years. The photos are there, thousands of them, and somehow there's still nothing on the shelf. You weren't failing. You were living it. Now let's actually do the thing, together, in 90 minutes.</p>
-  <a href="#checkout" class="cta-btn fi d3">Save My Spot | 199 AED</a>
+  <!-- Collage background: save your 5 book-spread photos as book-1.jpg … book-5.jpg
+       in the same folder as this HTML file, then open in a browser. -->
+  <div class="hero-collage">
+    <img class="hi-1" src="book-1.jpg" alt="">
+    <img class="hi-2" src="book-2.jpg" alt="">
+    <img class="hi-3" src="book-3.jpg" alt="">
+    <img class="hi-4" src="book-4.jpg" alt="">
+    <img class="hi-5" src="book-5.jpg" alt="">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="brand-tag fi">East2WestMama</span>
+    <h1 class="fi d1">Month One,<br><em>Done.</em></h1>
+    <p class="hero-tagline fi d2">You've been meaning to do this for years. The photos are there, thousands of them, and somehow there's still nothing on the shelf. You weren't failing. You were living it. Now let's actually do the thing, together, in 90 minutes.</p>
+    <a href="#checkout" class="cta-btn fi d3">Save My Spot | 199 AED</a>
+  </div>
 </div>
 
 <!-- ░░ IMAGE 1: HERO MOOD SHOT ░░ -->
