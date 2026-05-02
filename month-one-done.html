@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Month One, Done | East2WestMama</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #1c3a2a;
+    --green-light: #2a5040;
+    --cream: #f5f0e8;
+    --cream-dark: #ede5d4;
+    --warm-white: #faf8f4;
+    --text-dark: #1a1a18;
+    --text-mid: #4a4a42;
+    --accent: #c8a96e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--warm-white);
+    color: var(--text-dark);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* grain overlay */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.028;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+  }
+
+  /* fade-in */
+  .fi {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.85s cubic-bezier(0.4,0,0.2,1), transform 0.85s cubic-bezier(0.4,0,0.2,1);
+  }
+  .fi.d1 { transition-delay: 0.12s; }
+  .fi.d2 { transition-delay: 0.24s; }
+  .fi.d3 { transition-delay: 0.36s; }
+  .fi.vis { opacity: 1; transform: none; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--green);
+    color: var(--cream);
+    padding: 108px 40px 92px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 420px; height: 420px;
+    border-radius: 50%;
+    border: 1px solid rgba(200,169,110,0.1);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    border: 1px solid rgba(200,169,110,0.08);
+    pointer-events: none;
+  }
+  .hero-ring {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 640px; height: 640px;
+    border-radius: 50%;
+    border: 1px solid rgba(200,169,110,0.04);
+    pointer-events: none;
+  }
+
+  .brand-tag {
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 40px;
+    display: block;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(56px, 9vw, 96px);
+    font-weight: 300;
+    line-height: 1.0;
+    margin-bottom: 36px;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero-tagline {
+    font-size: 17px;
+    line-height: 1.85;
+    max-width: 520px;
+    margin: 0 auto 52px;
+    color: rgba(245,240,232,0.72);
+    font-weight: 300;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--green);
+    padding: 17px 44px;
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    border: none;
+    cursor: pointer;
+  }
+  .cta-btn:hover {
+    background: var(--cream);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.18);
+  }
+
+  /* ── PHOTO SLOTS ── */
+  .photo-slot {
+    position: relative;
+    overflow: hidden;
+    background: var(--cream-dark);
+  }
+  /* crosshatch bg */
+  .photo-slot::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(200,169,110,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,169,110,0.07) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+  }
+
+  /* corner photo-album mounts */
+  .pm {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    z-index: 2;
+  }
+  .pm::before, .pm::after {
+    content: '';
+    position: absolute;
+    background: var(--accent);
+    opacity: 0.45;
+  }
+  .pm::before { width: 100%; height: 1.5px; }
+  .pm::after  { width: 1.5px; height: 100%; }
+
+  .pm-tl { top: 16px; left: 16px; }
+  .pm-tl::before { top: 0; left: 0; }
+  .pm-tl::after  { top: 0; left: 0; }
+
+  .pm-tr { top: 16px; right: 16px; }
+  .pm-tr::before { top: 0; left: 0; }
+  .pm-tr::after  { top: 0; right: 0; left: auto; }
+
+  .pm-bl { bottom: 72px; left: 16px; }
+  .pm-bl::before { bottom: 0; top: auto; left: 0; }
+  .pm-bl::after  { bottom: 0; top: auto; left: 0; }
+
+  .pm-br { bottom: 72px; right: 16px; }
+  .pm-br::before { bottom: 0; top: auto; left: 0; }
+  .pm-br::after  { bottom: 0; top: auto; right: 0; left: auto; }
+
+  /* center holding area */
+  .photo-center {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    bottom: 62px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 40px;
+    z-index: 1;
+  }
+  .photo-center svg { opacity: 0.18; }
+  .photo-center p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(17px, 2.2vw, 22px);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--text-mid);
+    opacity: 0.38;
+    text-align: center;
+    line-height: 1.4;
+    max-width: 340px;
+    margin: 0;
+  }
+
+  /* label strip */
+  .photo-label {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: var(--green);
+    padding: 13px 22px 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    z-index: 3;
+  }
+  .photo-label .l-tag {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    white-space: nowrap;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+  .photo-label .l-pipe {
+    width: 1px;
+    background: rgba(200,169,110,0.28);
+    align-self: stretch;
+    flex-shrink: 0;
+  }
+  .photo-label .l-text {
+    font-size: 13px;
+    line-height: 1.55;
+    color: rgba(245,240,232,0.82);
+    font-weight: 300;
+    margin: 0;
+  }
+
+  /* sizes */
+  .ps-hero     { height: clamp(340px, 52vw, 540px); }
+  .ps-intimate { height: clamp(290px, 42vw, 420px); }
+  .ps-process  { height: clamp(270px, 38vw, 390px); margin: 44px 0; }
+  .ps-result   { height: clamp(340px, 48vw, 500px); }
+
+  /* intimate slot lives inside a padded wrapper */
+  .slot-wrap {
+    padding: 0 40px 80px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  /* process slot lives inside included section's column, continues timeline */
+  .step-slot {
+    border-left: 1px solid var(--cream-dark);
+    padding-left: 32px;
+    margin-bottom: 44px;
+  }
+
+  /* ── ORNAMENT ── */
+  .orn {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 220px;
+    margin: 0 auto;
+    padding: 52px 0;
+  }
+  .orn-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--accent), transparent);
+    opacity: 0.5;
+  }
+  .orn-gem { color: var(--accent); font-size: 8px; opacity: 0.6; }
+  .orn.light .orn-gem { color: var(--accent); }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 80px 40px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-size: 9px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 28px;
+    display: block;
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(34px, 5vw, 50px);
+    font-weight: 300;
+    line-height: 1.15;
+    margin-bottom: 32px;
+    color: var(--green);
+    letter-spacing: -0.01em;
+  }
+  h2 em { font-style: italic; }
+  p {
+    font-size: 17px;
+    line-height: 1.9;
+    color: var(--text-mid);
+    margin-bottom: 20px;
+  }
+  p:last-child { margin-bottom: 0; }
+
+  /* ── STORY ── */
+  .story {
+    background: var(--cream);
+    padding: 88px 40px 72px;
+  }
+  .story-inner {
+    max-width: 620px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .story-inner::before {
+    content: '\201C';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 200px;
+    line-height: 0.65;
+    color: var(--accent);
+    opacity: 0.1;
+    position: absolute;
+    top: -8px; left: -20px;
+    pointer-events: none;
+  }
+  .story p { font-size: 18px; line-height: 1.95; position: relative; z-index: 1; }
+  .story p.big {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 300;
+    line-height: 1.35;
+    color: var(--green);
+    margin-bottom: 36px;
+    letter-spacing: -0.01em;
+  }
+  .story-folio {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 52px;
+    opacity: 0.3;
+  }
+  .story-folio-line { height: 1px; flex: 1; background: var(--accent); }
+  .story-folio-text {
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--green);
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    width: 40px; height: 1px;
+    background: var(--accent);
+    margin: 52px auto;
+    opacity: 0.55;
+  }
+
+  /* ── IMAGINE ── */
+  .imagine {
+    background: var(--green);
+    color: var(--cream);
+    padding: 88px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .imagine::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 15% 50%, rgba(200,169,110,0.05) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 50%, rgba(200,169,110,0.05) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .imagine-inner { max-width: 580px; margin: 0 auto; position: relative; z-index: 1; }
+  .imagine h2 { color: var(--cream); margin-bottom: 44px; }
+  .imagine p { color: rgba(245,240,232,0.8); font-size: 18px; margin-bottom: 24px; }
+  .imagine p.highlight {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 3.8vw, 36px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--accent);
+    margin: 44px 0;
+    line-height: 1.45;
+    padding: 32px 0;
+    border-top: 1px solid rgba(200,169,110,0.2);
+    border-bottom: 1px solid rgba(200,169,110,0.2);
+  }
+
+  /* ── INCLUDED / STEPS ── */
+  .included { background: var(--warm-white); }
+  .step {
+    border-left: 1px solid var(--cream-dark);
+    padding: 0 0 44px 32px;
+    position: relative;
+  }
+  .step:last-child { border-left: 1px solid transparent; padding-bottom: 0; }
+  .step::before {
+    content: '';
+    position: absolute;
+    left: -5px; top: 6px;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px var(--warm-white);
+  }
+  .step-num {
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+    display: block;
+  }
+  .step h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--green);
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+  }
+  .step p { font-size: 16px; margin-bottom: 0; }
+
+  /* ── WHO ── */
+  .who { background: var(--cream); }
+
+  /* ── INVESTMENT ── */
+  .investment {
+    background: var(--green);
+    color: var(--cream);
+    padding: 88px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .investment::before {
+    content: '';
+    position: absolute;
+    top: -140px; right: -140px;
+    width: 520px; height: 520px;
+    border-radius: 50%;
+    border: 1px solid rgba(200,169,110,0.06);
+    pointer-events: none;
+  }
+  .investment-inner { max-width: 520px; margin: 0 auto; position: relative; z-index: 1; }
+  .investment h2 { color: var(--cream); }
+  .investment p { color: rgba(245,240,232,0.75); }
+
+  .price-block {
+    margin: 52px 0;
+    padding: 40px 32px 36px;
+    border: 1px solid rgba(200,169,110,0.22);
+    position: relative;
+  }
+  /* bracket corners on price block */
+  .price-block::before {
+    content: '';
+    position: absolute;
+    top: -2px; left: -2px;
+    width: 22px; height: 22px;
+    border-top: 2px solid rgba(200,169,110,0.4);
+    border-left: 2px solid rgba(200,169,110,0.4);
+  }
+  .price-block::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; right: -2px;
+    width: 22px; height: 22px;
+    border-bottom: 2px solid rgba(200,169,110,0.4);
+    border-right: 2px solid rgba(200,169,110,0.4);
+  }
+  .price-early {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 80px;
+    font-weight: 300;
+    color: var(--accent);
+    line-height: 1;
+    display: block;
+    letter-spacing: -0.02em;
+  }
+  .price-label {
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.45);
+    margin-top: 10px;
+    display: block;
+  }
+  .price-full {
+    font-size: 14px;
+    color: rgba(245,240,232,0.32);
+    margin-top: 16px;
+    text-decoration: line-through;
+    margin-bottom: 0;
+  }
+  .includes-list {
+    text-align: left;
+    margin: 36px 0;
+    list-style: none;
+  }
+  .includes-list li {
+    padding: 13px 0;
+    border-bottom: 1px solid rgba(245,240,232,0.07);
+    color: rgba(245,240,232,0.8);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    line-height: 1.5;
+  }
+  .includes-list li::before {
+    content: '';
+    width: 22px; height: 1px;
+    background: var(--accent);
+    flex-shrink: 0;
+    opacity: 0.65;
+  }
+
+  /* ── ABOUT ── */
+  .about { background: var(--warm-white); }
+
+  /* ── FAQ ── */
+  .faq { background: var(--cream); }
+  .faq-item {
+    border-bottom: 1px solid rgba(200,169,110,0.18);
+    padding: 30px 0;
+  }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 23px;
+    font-weight: 400;
+    color: var(--green);
+    margin-bottom: 14px;
+  }
+  .faq-a {
+    font-size: 16px;
+    line-height: 1.85;
+    color: var(--text-mid);
+    margin-bottom: 0;
+  }
+
+  /* ── CLOSE ── */
+  .close {
+    background: var(--cream-dark);
+    padding: 108px 40px;
+    text-align: center;
+  }
+  .close-inner { max-width: 560px; margin: 0 auto; }
+  .close p { font-size: 18px; margin-bottom: 24px; }
+  .close p.big {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 4.5vw, 46px);
+    font-weight: 300;
+    color: var(--green);
+    line-height: 1.25;
+    margin-bottom: 44px;
+    letter-spacing: -0.01em;
+  }
+  .close-sig {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-style: italic;
+    color: var(--green);
+    margin: 40px 0 !important;
+    line-height: 1.5;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--green);
+    color: rgba(245,240,232,0.38);
+    text-align: center;
+    padding: 36px;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 600px) {
+    .hero { padding: 80px 24px 68px; }
+    section { padding: 64px 24px; }
+    .story { padding: 64px 24px 56px; }
+    .imagine { padding: 64px 24px; }
+    .investment { padding: 64px 24px; }
+    .faq { padding: 64px 24px; }
+    .close { padding: 80px 24px; }
+    .slot-wrap { padding: 0 24px 64px; }
+    .photo-label .l-text { font-size: 12px; }
+    .story-inner::before { font-size: 130px; left: -10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-ring"></div>
+  <span class="brand-tag fi">East2WestMama</span>
+  <h1 class="fi d1">Month One,<br><em>Done.</em></h1>
+  <p class="hero-tagline fi d2">You've been meaning to do this for years. The photos are there, thousands of them, and somehow there's still nothing on the shelf. You weren't failing. You were living it. Now let's actually do the thing, together, in 90 minutes.</p>
+  <a href="#checkout" class="cta-btn fi d3">Save My Spot | 199 AED</a>
+</div>
+
+<!-- ░░ IMAGE 1: HERO MOOD SHOT ░░ -->
+<div class="photo-slot ps-hero fi">
+  <span class="pm pm-tl"></span><span class="pm pm-tr"></span>
+  <span class="pm pm-bl"></span><span class="pm pm-br"></span>
+  <div class="photo-center">
+    <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#4a4a42" stroke-width="1">
+      <rect x="3" y="5" width="18" height="14" rx="1.5"/>
+      <circle cx="12" cy="12" r="3.5"/>
+      <path d="M8.5 5V4a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v1"/>
+    </svg>
+    <p>Your photo goes here</p>
+  </div>
+  <div class="photo-label">
+    <span class="l-tag">Photograph</span>
+    <div class="l-pipe"></div>
+    <p class="l-text">Your stack of printed memory books arranged on a cream linen surface in natural window light from the left. Books slightly fanned, top one open to a completed spread. Shoot from slightly above. Warm, still, quiet — this sets the mood of the entire page.</p>
+  </div>
+</div>
+
+<!-- OPENING STORY -->
+<div class="story">
+  <div class="story-inner fi">
+    <p class="big">There's a book you've been meaning to make.</p>
+    <p>Maybe it's from this year. Maybe it's from three years ago. Maybe you started it once and got to March and then life happened and it's been sitting there ever since, quietly reminding you every time you think about it.</p>
+    <p>It's not that the memories aren't there. They're all there, on your phone, in your camera roll, thousands of them. Last summer at the beach. The birthday cake that went sideways. That random Tuesday that somehow turned into the best day.</p>
+    <p>You captured all of it. You just never did anything with it.</p>
+    <p>And now it's been long enough that even thinking about where to start makes you want to close the tab.</p>
+    <div class="story-folio">
+      <div class="story-folio-line"></div>
+      <span class="story-folio-text">East2WestMama</span>
+      <div class="story-folio-line"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ░░ IMAGE 2: INTIMATE SHOT ░░ -->
+<div class="slot-wrap fi">
+  <div class="photo-slot ps-intimate">
+    <span class="pm pm-tl"></span><span class="pm pm-tr"></span>
+    <span class="pm pm-bl"></span><span class="pm pm-br"></span>
+    <div class="photo-center">
+      <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#4a4a42" stroke-width="1">
+        <rect x="3" y="5" width="18" height="14" rx="1.5"/>
+        <circle cx="12" cy="12" r="3.5"/>
+        <path d="M8.5 5V4a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v1"/>
+      </svg>
+      <p>Your photo goes here</p>
+    </div>
+    <div class="photo-label">
+      <span class="l-tag">Photograph</span>
+      <div class="l-pipe"></div>
+      <p class="l-text">A child's hand resting on an open page in one of your printed books. Close up, soft natural window light. The page slightly soft-focus in the background. Quiet, tender, still — this is the emotional heart of the page.</p>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT THIS IS -->
+<section class="fi">
+  <span class="section-label">What This Is</span>
+  <h2>A 90-minute workshop where we actually <em>do</em> the thing.</h2>
+  <p>Month One, Done is a live workshop on Zoom where I walk you through my Scroll to Shelf Method and by the time we finish, you have one complete month of your family's life documented. Photos chosen. Captions written. Pages finished.</p>
+  <p>We sit down together and we do it. Right there, in the workshop, it gets done.</p>
+  <p>Some mums work on something from this year. Some go back and rescue a month they've been meaning to capture for years. Either works. The point is that you leave with something real, something you can actually print and put on your shelf.</p>
+</section>
+
+<!-- IMAGINE -->
+<div class="imagine">
+  <div class="imagine-inner">
+    <span class="section-label fi" style="display:block;margin-bottom:28px;">A different kind of afternoon</span>
+    <h2 class="fi">Imagine this.</h2>
+    <p class="fi d1">Imagine opening your camera roll and knowing exactly what to do.</p>
+    <p class="fi d1">Sitting down, doing it, and closing your laptop with something actually finished.</p>
+    <p class="highlight fi d2">One month of your family's life, captured before it fades.</p>
+    <p class="fi d3">That's what happens inside Month One, Done.</p>
+  </div>
+</div>
+
+<!-- RESULTS -->
+<section class="fi">
+  <span class="section-label">What You Walk Away With</span>
+  <h2>One month of your family's life. <em>Finished.</em></h2>
+  <p>By the end of our 90 minutes together, you'll have chosen your photos for one month, written your captions, and have a set of finished pages ready to send to print.</p>
+  <p>The bigger thing, honestly, is this: you'll have done the thing you've been putting off. And once you've done it once, you know exactly how to do it again. That's the whole point of this workshop. You'll leave with one finished month and proof that this is genuinely as simple as I say it is.</p>
+  <p>The photos on your phone are memories your kids will one day want to see. This is how they get off your phone and onto your shelf.</p>
+</section>
+
+<!-- STEPS -->
+<section class="included fi">
+  <span class="section-label">What We Cover</span>
+  <h2>Here's what we do <em>on the day.</em></h2>
+  <div class="divider"></div>
+
+  <div class="step fi">
+    <span class="step-num">Step 01</span>
+    <h3>Choose your photos</h3>
+    <p>I'll show you exactly how to go through your camera roll and pull out the ones worth keeping. This is the step that stops most people before they even begin, because standing in front of 10,000 photos with no system is genuinely overwhelming. Once you have a way of doing it, the whole thing gets simple.</p>
+  </div>
+
+  <div class="step fi">
+    <span class="step-num">Step 02</span>
+    <h3>Edit, if you want to</h3>
+    <p>A little crop, a little light. Completely optional. But it's the difference between a photo that sits there and one that makes you stop and actually look.</p>
+  </div>
+
+  <div class="step fi">
+    <span class="step-num">Step 03</span>
+    <h3>Open the template</h3>
+    <p>I'll send it to you before the workshop so we're ready to go on the day. You drag your photos in, arrange them, and suddenly it starts looking like something real. This is usually the moment people go quiet for a second because they can't believe how quickly it comes together.</p>
+  </div>
+
+  <!-- ░░ IMAGE 3: PROCESS SHOT ░░ -->
+  <div class="step-slot fi">
+    <div class="photo-slot ps-process">
+      <span class="pm pm-tl"></span><span class="pm pm-tr"></span>
+      <span class="pm pm-bl"></span><span class="pm pm-br"></span>
+      <div class="photo-center">
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#4a4a42" stroke-width="1">
+          <rect x="3" y="5" width="18" height="14" rx="1.5"/>
+          <circle cx="12" cy="12" r="3.5"/>
+          <path d="M8.5 5V4a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v1"/>
+        </svg>
+        <p>Your photo goes here</p>
+      </div>
+      <div class="photo-label">
+        <span class="l-tag">Photograph</span>
+        <div class="l-pipe"></div>
+        <p class="l-text">Overhead flat-lay: your laptop open showing the Canva template with photos dragged in, a small stack of printed 4×6 photos beside it, a mug of tea in one corner. Shot from directly above. Warm, real, lived-in — this is the "in the middle of doing it" moment.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="step fi">
+    <span class="step-num">Step 04</span>
+    <h3>Write the captions</h3>
+    <p>This is the part most people dread and the part that used to take me hours. Now it takes me thirty seconds per photo. I'll show you exactly how, using AI to get you started so you're never staring at a blank box wondering what to say.</p>
+  </div>
+
+  <div class="step fi">
+    <span class="step-num">Step 05</span>
+    <h3>One month. Done.</h3>
+    <p>You close your laptop with finished pages in hand. That's it. You actually did the thing.</p>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section class="who fi">
+  <span class="section-label">Is This For You?</span>
+  <h2>This is for you <em>if...</em></h2>
+  <p>Your camera roll is full of photos you've done nothing with. It doesn't matter whether your kids are one or eleven, the photos are piling up either way and the gap between capturing moments and doing something with them keeps getting wider.</p>
+  <p>You've told yourself you'll get around to it. You've bought the app, maybe even the physical book. You're someone who cares about this deeply and keeps running out of time and energy and knowing where to begin.</p>
+  <p>You want something you can actually hold in your hands and put on your shelf. Something real, something your kids pick up and actually look at.</p>
+  <p>You don't need any design experience for this. You don't need a paid Canva account. You don't need to have your photos organised beforehand. You just need to show up and I'll walk you through the rest.</p>
+  <p>This is the wrong fit if you want an elaborate, heavily designed scrapbook. This is a simple, beautiful, completely doable system for mums who want their memories documented without it becoming another thing that never gets finished.</p>
+</section>
+
+<!-- ░░ IMAGE 4: FINISHED BOOK ░░ -->
+<div class="photo-slot ps-result fi">
+  <span class="pm pm-tl"></span><span class="pm pm-tr"></span>
+  <span class="pm pm-bl"></span><span class="pm pm-br"></span>
+  <div class="photo-center">
+    <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#4a4a42" stroke-width="1">
+      <rect x="3" y="5" width="18" height="14" rx="1.5"/>
+      <circle cx="12" cy="12" r="3.5"/>
+      <path d="M8.5 5V4a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v1"/>
+    </svg>
+    <p>Your photo goes here</p>
+  </div>
+  <div class="photo-label">
+    <span class="l-tag">Photograph</span>
+    <div class="l-pipe"></div>
+    <p class="l-text">Your finished printed memory book held open in two hands, showing a beautiful completed spread. Natural window light, cream or white background. Just hands and book — face out of frame. This is the payoff shot: warm, real, and worth every minute.</p>
+  </div>
+</div>
+
+<!-- INVESTMENT -->
+<div class="investment" id="checkout">
+  <div class="investment-inner">
+    <span class="section-label fi" style="display:block;margin-bottom:28px;">Join Us</span>
+    <h2 class="fi">The <em>Investment</em></h2>
+
+    <div class="price-block fi d1">
+      <span class="price-early">199 AED</span>
+      <span class="price-label">Early Bird Price</span>
+      <p class="price-full">250 AED after early bird closes</p>
+    </div>
+
+    <ul class="includes-list fi d2">
+      <li>90-minute live workshop on Zoom</li>
+      <li>The Canva template, sent to you in advance</li>
+      <li>Step-by-step guidance through every part of the Scroll to Shelf Method</li>
+      <li>Recording available as backup</li>
+    </ul>
+
+    <p class="fi d2">One afternoon. One month of your family's life, captured before it's gone.</p>
+
+    <div class="orn light fi d3">
+      <div class="orn-line"></div>
+      <span class="orn-gem">◆</span>
+      <div class="orn-line"></div>
+    </div>
+
+    <a href="#checkout" class="cta-btn fi d3">Save My Spot | 199 AED</a>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about fi">
+  <span class="section-label">Your Host</span>
+  <h2>I'm Vera.</h2>
+  <p>I'm an AMI Montessori-trained parenting coach and the founder of East2WestMama. I've been making family memory books for nearly ten years. I have a shelf full of them at home and my kids ask to look at them constantly.</p>
+  <p>I'm a mum who figured out a system that actually works around a real life, around school pickups and work deadlines and the kind of weeks where you just survive and that's enough.</p>
+  <p>I created this workshop because I know the feeling of having thousands of photos and nothing to show for them. And I know how good it feels to finally fix that. I want you to have that feeling by the time you close your laptop.</p>
+</section>
+
+<!-- FAQ -->
+<section class="faq fi">
+  <span class="section-label">Questions</span>
+  <h2>A few things <em>you might be wondering.</em></h2>
+
+  <div class="faq-item">
+    <p class="faq-q">How long is the workshop?</p>
+    <p class="faq-a">90 minutes live on Zoom. I'd clear a little buffer either side so you're not rushing in or out.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Do I need Canva experience?</p>
+    <p class="faq-a">Not at all. I'll walk you through everything on the day. If you've never opened Canva in your life, that's completely fine.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Do I need a paid Canva account?</p>
+    <p class="faq-a">The free version works perfectly. You don't need to upgrade anything.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">What AI tool do I need?</p>
+    <p class="faq-a">Whatever you already use. Claude, ChatGPT, even the free version of either. I'll show you exactly what to type so your captions sound like you, not like a robot.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Which month do we document?</p>
+    <p class="faq-a">Any month you choose. Some people start with something recent, some go back and rescue a month that's been sitting there for years. Either works completely.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">What if I can't make it live?</p>
+    <p class="faq-a">A recording will be available, but I'll be honest with you. The mums who show up live are the ones who leave with something finished. The recording is there as a backup, not a plan.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">When is it?</p>
+    <p class="faq-a">Saturday 30th May at 10am or Monday 1st June. We'll put it to a vote and if there's enough interest, we may run both.</p>
+  </div>
+</section>
+
+<!-- CLOSE -->
+<div class="close">
+  <div class="close-inner fi">
+    <p class="big">Another year is already happening. The photos are piling up.</p>
+    <p>Somewhere in your camera roll are months that are already starting to blur at the edges because that's what time does when you're not looking. The family holiday. That season the kids were obsessed with something they've completely forgotten now. The ordinary Tuesdays that were actually really good.</p>
+    <p>You didn't miss those moments. You were there for all of them. You just never had a system for what to do with them afterwards.</p>
+    <p>That's all this is. 90 minutes, a simple method, and someone sitting with you while you actually do it. By the time we finish, you'll have one month done and you'll know exactly how to do the rest.</p>
+    <p class="close-sig">Come and do the thing you've been meaning to do for years.</p>
+    <a href="#checkout" class="cta-btn">Save My Spot | 199 AED</a>
+    <p style="font-size:14px;color:var(--text-mid);margin-top:24px;">Price goes to 250 AED when early bird closes.</p>
+  </div>
+</div>
+
+<footer>
+  &copy; 2026 East2WestMama &nbsp;|&nbsp; @east2westmama
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('vis');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.07, rootMargin: '0px 0px -32px 0px' });
+
+  document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+
+  // hero elements fire immediately
+  document.querySelectorAll('.hero .fi').forEach(el => el.classList.add('vis'));
+</script>
+</body>
+</html>
