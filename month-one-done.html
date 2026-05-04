@@ -227,6 +227,16 @@
     transform: translateY(-2px);
     box-shadow: 0 8px 28px rgba(0,0,0,0.18);
   }
+  .cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+  @media (max-width: 600px) {
+    .cta-group { flex-direction: column; align-items: stretch; }
+    .cta-group .cta-btn { text-align: center; }
+  }
 
   /* sizes */
   .ps-hero     { height: clamp(340px, 52vw, 540px); }
@@ -616,7 +626,10 @@
     <span class="brand-tag fi">East2WestMama</span>
     <h1 class="fi d1">Month One,<br><em>Done.</em></h1>
     <p class="hero-tagline fi d2">You've been meaning to do this for years. The photos are there, thousands of them, and somehow there's still nothing on the shelf. You weren't failing. You were living it. Now let's actually do the thing, together, in 90 minutes.</p>
-    <a href="#checkout" class="cta-btn fi d3">Save My Spot | 199 AED</a>
+    <div class="cta-group fi d3">
+      <a href="https://vera-s-site-854a.thinkific.com/products/live_events/month-one-done-29-may" class="cta-btn">Book May 29 Morning — 10am–11:30am</a>
+      <a href="https://vera-s-site-854a.thinkific.com/products/live_events/month-one-done-30-may" class="cta-btn">Book May 30 Evening — 4pm–5:30pm</a>
+    </div>
   </div>
 </div>
 
@@ -757,7 +770,10 @@
       <div class="orn-line"></div>
     </div>
 
-    <a href="#checkout" class="cta-btn fi d3">Save My Spot | 199 AED</a>
+    <div class="cta-group fi d3">
+      <a href="https://vera-s-site-854a.thinkific.com/products/live_events/month-one-done-29-may" class="cta-btn">Book May 29 Morning — 10am–11:30am</a>
+      <a href="https://vera-s-site-854a.thinkific.com/products/live_events/month-one-done-30-may" class="cta-btn">Book May 30 Evening — 4pm–5:30pm</a>
+    </div>
   </div>
 </div>
 
@@ -813,7 +829,10 @@
     <p>You didn't miss those moments. You were there for all of them. You just never had a system for what to do with them afterwards.</p>
     <p>That's all this is. 90 minutes, a simple method, and someone sitting with you while you actually do it. By the time we finish, you'll have one month done and you'll know exactly how to do the rest.</p>
     <p class="close-sig">Come and do the thing you've been meaning to do for years.</p>
-    <a href="#checkout" class="cta-btn">Save My Spot | 199 AED</a>
+    <div class="cta-group">
+      <a href="https://vera-s-site-854a.thinkific.com/products/live_events/month-one-done-29-may" class="cta-btn">Book May 29 Morning — 10am–11:30am</a>
+      <a href="https://vera-s-site-854a.thinkific.com/products/live_events/month-one-done-30-may" class="cta-btn">Book May 30 Evening — 4pm–5:30pm</a>
+    </div>
     <p style="font-size:14px;color:var(--text-mid);margin-top:24px;">Price goes to 250 AED when early bird closes.</p>
   </div>
 </div>
